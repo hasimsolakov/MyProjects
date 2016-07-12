@@ -40,6 +40,10 @@
         "source": "C:\\Users\\Hashim\\Documents\\MyProjects.git\\trunk\\EzPresenter\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.2.0\\res\\layout\\design_layout_tab_text.xml"
     },
     {
+        "merged": "C:\\Users\\Hashim\\Documents\\MyProjects.git\\trunk\\EzPresenter\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_selecter.xml",
+        "source": "C:\\Users\\Hashim\\Documents\\MyProjects.git\\trunk\\EzPresenter\\app\\src\\main\\res\\layout\\content_selecter.xml"
+    },
+    {
         "merged": "C:\\Users\\Hashim\\Documents\\MyProjects.git\\trunk\\EzPresenter\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
         "source": "C:\\Users\\Hashim\\Documents\\MyProjects.git\\trunk\\EzPresenter\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.0\\res\\layout\\notification_template_media.xml"
     },

@@ -5,14 +5,13 @@ import android.bluetooth.BluetoothDevice;
 
 import com.example.hashim.ezpresenter.Interfaces.IMainPresenter;
 import com.example.hashim.ezpresenter.Interfaces.IMainView;
-import com.example.hashim.ezpresenter.Views.MainActivity;
 
 import java.util.Set;
 
 /**
  * Created by Hashim on 9.7.2016 г..
  */
-public class MainPresenter implements IMainPresenter{
+public class MainPresenter implements IMainPresenter {
     private BluetoothAdapter bluetoothAdapter;
     private IMainView mainView;
 
@@ -39,6 +38,7 @@ public class MainPresenter implements IMainPresenter{
 
     @Override
     public void onDestroy() {
-
+        this.bluetoothAdapter = null;
+        this.mainView = null;
     }
 }

@@ -13,8 +13,7 @@ import java.util.ArrayList;
 public interface ISelectPresentationView {
     void goToPresentationView();
     void runOnView(Runnable action);
-    ListView getPresentationsListView();
-    Context getContext();
+    void showPresentationsListView(ArrayList presentationsNamesList);
     View findViewById(int id);
     void finish();
 }

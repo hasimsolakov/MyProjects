@@ -9,4 +9,5 @@ import java.io.InputStream;
  */
 public interface IStreamReader extends Closeable{
     String readLine();
+    boolean isOpen();
 }

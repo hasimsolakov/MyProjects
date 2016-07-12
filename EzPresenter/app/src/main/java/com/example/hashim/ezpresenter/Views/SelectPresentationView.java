@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,12 +27,12 @@ import java.util.ArrayList;
  */
 public class SelectPresentationView extends AppCompatActivity implements ISelectPresentationView {
     private ISelectPresentationPresenter presenter;
-    private ArrayAdapter presentationsAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_presentation);
+
         Intent intent = getIntent();
         String deviceName = intent.getStringExtra("DEVICE_NAME");
         this.presenter = new SelectPresentationPresenter(this, BluetoothAdapter.getDefaultAdapter(), deviceName);
@@ -67,16 +68,8 @@ public class SelectPresentationView extends AppCompatActivity implements ISelect
         }
     }
 
-    public ArrayAdapter getPresentationsAdapter(){
-        return this.presentationsAdapter;
-    }
-
     public void runOnView(Runnable action){
         this.runOnUiThread(action);
-    }
-
-    public View findViewById(int id){
-        return findViewById(id);
     }
 
     @Override
@@ -87,18 +80,24 @@ public class SelectPresentationView extends AppCompatActivity implements ISelect
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         this.presenter.onDestroy();
+        super.onDestroy();
+
     }
 
-    public Context getContext(){
-        return this;
-    }
 
-
-    public ListView getPresentationsListView() {
-        ListView presentationsListView = (ListView) findViewById(R.id.presentations_lis_view);
-        return presentationsListView;
+    public void showPresentationsListView(ArrayList presentationsNamesList) {
+            ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, R.layout.list_item, presentationsNamesList);
+            ListView presentationsListView = (ListView) findViewById(R.id.presentations_list_view);
+            presentationsListView.setAdapter(stringArrayAdapter);
+            presentationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    TextView name = (TextView) view;
+                    String presentationToOpenName = name.getText().toString();
+                    presenter.openPresentation(presentationToOpenName);
+                }
+            });
     }
 
     @Override
@@ -107,5 +106,6 @@ public class SelectPresentationView extends AppCompatActivity implements ISelect
         startActivity(intent);
     }
 }
+
 
 
