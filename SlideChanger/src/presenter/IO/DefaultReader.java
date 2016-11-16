@@ -1,9 +1,8 @@
 package presenter.IO;
 
 
-import presenter.Interfaces.IReader;
+import presenter.interfaces.Reader;
 import presenter.framework.lifecycle.dependency.Component;
-import presenter.framework.lifecycle.dependency.Inject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 @Component
-public class DefaultReader implements IReader {
+public class DefaultReader implements Reader {
 
     private BufferedReader reader;
 

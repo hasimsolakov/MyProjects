@@ -1,7 +1,7 @@
 package presenter.framework.commandDispatcher;
 
 
-import presenter.Core.Models.Utils;
+import presenter.core.models.Utils;
 import presenter.framework.dependencyInjector.Container;
 import presenter.framework.lifecycle.command.CommandMethod;
 import presenter.framework.lifecycle.controller.CommandParameter;

@@ -1,4 +1,4 @@
-package presenter.CustomExceptions;
+package presenter.customExceptions;
 
 /**
  * Created by Hashim on 5.7.2016 г..

@@ -1,9 +1,7 @@
-package presenter.Core.Models;
+package presenter.core.models;
 
 
-import presenter.Interfaces.IData;
-
-public class Data<T> implements IData {
+public class Data<T> implements presenter.interfaces.Data {
     private T data;
 
     public Data(){

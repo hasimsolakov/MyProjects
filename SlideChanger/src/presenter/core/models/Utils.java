@@ -1,4 +1,4 @@
-package presenter.Core.Models;
+package presenter.core.models;
 
 import java.util.HashMap;
 import java.util.Map;

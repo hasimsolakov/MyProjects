@@ -1,6 +1,5 @@
-package presenter.Fatories;
+package presenter.factories;
 
-import presenter.Interfaces.IOutStreamFactory;
 import presenter.framework.lifecycle.dependency.Component;
 
 import javax.microedition.io.StreamConnection;
@@ -8,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 @Component
-public class OutStreamFactory implements IOutStreamFactory {
+public class DefaultOutStreamFactory implements presenter.interfaces.OutStreamFactory {
     @Override
     public OutputStream create(StreamConnection connection) throws IOException {
         return connection.openOutputStream();

@@ -1,4 +1,4 @@
-package presenter;
+package presenter.core;
 
 import org.apache.poi.hslf.extractor.PowerPointExtractor;
 import org.apache.poi.hslf.usermodel.HSLFSlide;

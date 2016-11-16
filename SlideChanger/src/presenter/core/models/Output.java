@@ -1,10 +1,7 @@
-package presenter.Core.Models;
+package presenter.core.models;
 
 
-import presenter.Interfaces.IOutput;
-
-
-public class Output<T> implements IOutput {
+public class Output<T> implements presenter.interfaces.Output {
     private T data;
 
     public Output(T data){

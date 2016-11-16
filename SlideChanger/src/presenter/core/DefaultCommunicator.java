@@ -1,7 +1,7 @@
-package presenter.Core;
+package presenter.core;
 
 
-import presenter.Interfaces.*;
+import presenter.interfaces.*;
 import presenter.framework.lifecycle.dependency.Component;
 import presenter.framework.lifecycle.dependency.Inject;
 
@@ -9,15 +9,15 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Communicator implements ICommunicator {
+public class DefaultCommunicator implements presenter.interfaces.Communicator {
 
     @Inject
-    private IWriter writer;
+    private Writer writer;
 
     @Inject
-    private IReader reader;
+    private Reader reader;
 
-    public Communicator(IWriter writer, IReader reader) {
+    public DefaultCommunicator(Writer writer, Reader reader) {
         this.writer = writer;
         this.reader = reader;
     }
@@ -30,13 +30,13 @@ public class Communicator implements ICommunicator {
     }
 
     @Override
-    public void send(IOutput output) {
+    public void send(Output output) {
         this.writer.writeLine(output.getData());
     }
 
     @Override
-    public void send(List<IOutput> outputs){
-        for (IOutput output:outputs) {
+    public void send(List<Output> outputs){
+        for (Output output:outputs) {
             this.send(output);
         }
     }

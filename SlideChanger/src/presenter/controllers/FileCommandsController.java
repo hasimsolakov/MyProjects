@@ -1,6 +1,6 @@
 package presenter.controllers;
 
-import presenter.Interfaces.ICommunicator;
+import presenter.interfaces.Communicator;
 import presenter.framework.lifecycle.command.CommandMethod;
 import presenter.framework.lifecycle.controller.CommandController;
 import presenter.framework.lifecycle.controller.CommandMapping;
@@ -16,7 +16,7 @@ public class FileCommandsController {
     private final static String presentationFolder = "/home/hashim/Desktop";
 
     @Inject
-    private ICommunicator communicator;
+    private Communicator communicator;
 
     @CommandMapping(CommandMethod.OPEN_PRESENTATION)
     public void openPresentationCommand() {

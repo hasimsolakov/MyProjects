@@ -1,12 +1,12 @@
-package presenter.Core;
+package presenter.core;
 
-import presenter.Core.Models.Output;
-import presenter.CustomExceptions.ConnectionCouldNotBeEstablished;
-import presenter.Interfaces.*;
+import presenter.customExceptions.ConnectionCouldNotBeEstablished;
+import presenter.interfaces.*;
 import presenter.framework.commandDispatcher.CommandDispatcher;
 import presenter.framework.dependencyInjector.Container;
 import presenter.framework.lifecycle.dependency.Component;
 import presenter.framework.lifecycle.dependency.Inject;
+import presenter.interfaces.Runnable;
 
 import javax.bluetooth.RemoteDevice;
 import javax.bluetooth.UUID;
@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Engine implements IEngine {
+public class Engine implements Runnable {
 
-    private ICommunicator communicator;
+    private presenter.interfaces.Communicator communicator;
 
     @Inject
     private Container dependencyContainer;
@@ -32,16 +32,16 @@ public class Engine implements IEngine {
     private CommandDispatcher commandDispatcher;
 
     @Inject
-    private IInStreamFactory inStreamFactory;
+    private InStreamFactory inStreamFactory;
 
     @Inject
-    private IOutStreamFactory outStreamFactory;
+    private OutStreamFactory outStreamFactory;
 
     @Inject
-    private IReaderFactory readerFactory;
+    private ReaderFactory readerFactory;
 
     @Inject
-    private IWriterFactory writerFactory;
+    private WriterFactory writerFactory;
 
     public Engine() { }
 
@@ -50,17 +50,17 @@ public class Engine implements IEngine {
             StreamConnection connection = this.establishConnection();
             try(InputStream inputStream = this.inStreamFactory.create(connection)){
                 try(OutputStream outputStream = this.outStreamFactory.create(connection)){
-                    IWriter writer = this.writerFactory.create(outputStream);
-                    IReader reader = this.readerFactory.create(inputStream);
-                    this.dependencyContainer.registerInstanceOfSuperClass(writer, IWriter.class);
-                    this.dependencyContainer.registerInstanceOfSuperClass(reader, IReader.class);
-                    this.communicator = new Communicator(writer, reader);
-                    this.dependencyContainer.registerInstanceOfSuperClass(this.communicator, ICommunicator.class);
-                   List<IOutput> presentationsNames = this.getPresentations(new File("/home/hashim/Desktop")); //TODO
-                    IOutput end = new Output<>("end");
+                    Writer writer = this.writerFactory.create(outputStream);
+                    Reader reader = this.readerFactory.create(inputStream);
+                    this.dependencyContainer.registerInstanceOfSuperClass(writer, Writer.class);
+                    this.dependencyContainer.registerInstanceOfSuperClass(reader, Reader.class);
+                    this.communicator = new DefaultCommunicator(writer, reader);
+                    this.dependencyContainer.registerInstanceOfSuperClass(this.communicator, presenter.interfaces.Communicator.class);
+                   List<Output> presentationsNames = this.getPresentations(new File("/home/hashim/Desktop")); //TODO
+                    Output end = new presenter.core.models.Output("end");
                     presentationsNames.add(end);
                     String outputType = "Presentations names";
-                    IOutput output = new Output<>(outputType);
+                    Output output = new presenter.core.models.Output(outputType);
                     this.communicator.send(output);
                     this.communicator.send(presentationsNames);
                     String input;
@@ -82,11 +82,11 @@ public class Engine implements IEngine {
         }
     }
 
-    private List<IOutput> getPresentations(File presentationsFolder){
+    private List<Output> getPresentations(File presentationsFolder){
         File [] files = presentationsFolder.listFiles();
-        List<IOutput> presentationsNames = new ArrayList<>(files.length);
+        List<Output> presentationsNames = new ArrayList<>(files.length);
         for (File file:files) {
-            presentationsNames.add(new Output<>(file.getName()));
+            presentationsNames.add(new presenter.core.models.Output(file.getName()));
         }
 
         return presentationsNames;

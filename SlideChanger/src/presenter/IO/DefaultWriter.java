@@ -1,13 +1,13 @@
 package presenter.IO;
 
-import presenter.Interfaces.IWriter;
+import presenter.interfaces.Writer;
 import presenter.framework.lifecycle.dependency.Component;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
 @Component
-public class DefaultWriter implements IWriter {
+public class DefaultWriter implements Writer {
     private PrintWriter writer;
 
     public DefaultWriter(OutputStream outStream) {

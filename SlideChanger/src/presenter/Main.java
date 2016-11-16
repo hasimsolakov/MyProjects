@@ -1,8 +1,8 @@
 package presenter;
 
-import presenter.Interfaces.*;
 import presenter.framework.dependencyInjector.*;
 import presenter.framework.parser.AnnotationParserImpl;
+import presenter.interfaces.Runnable;
 import presenter.provider.type.TypeProvider;
 import presenter.provider.type.TypeProviderImpl;
 
@@ -21,7 +21,7 @@ public  class Main{
 
         TypeProvider typeProvider = new TypeProviderImpl();
         Container dependencyContainer = new DependencyContainer(typeProvider, AnnotationParserImpl.class);
-        IEngine engine = dependencyContainer.getInstance(IEngine.class);
+        Runnable engine = dependencyContainer.getInstance(Runnable.class);
         engine.run();
     }
 }
