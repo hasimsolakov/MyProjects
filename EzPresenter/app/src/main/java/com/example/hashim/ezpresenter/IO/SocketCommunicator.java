@@ -1,7 +1,5 @@
 package com.example.hashim.ezpresenter.IO;
 
-import android.bluetooth.BluetoothSocket;
-
 import com.example.hashim.ezpresenter.Interfaces.IOutput;
 import com.example.hashim.ezpresenter.Interfaces.IPresentationPresenter;
 import com.example.hashim.ezpresenter.Interfaces.ISelectPresentationPresenter;

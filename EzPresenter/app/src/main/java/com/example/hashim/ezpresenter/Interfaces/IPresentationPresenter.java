@@ -1,8 +1,11 @@
 package com.example.hashim.ezpresenter.Interfaces;
 
-/**
- * Created by Hashim on 11.7.2016 г..
- */
-public interface IPresentationPresenter {
 
+import android.view.View;
+
+public interface IPresentationPresenter {
+    void gotoNextSlide();
+    void gotoPreviousSlide();
+    void manipulateSlideShow(View view);
+    void onDestroy();
 }

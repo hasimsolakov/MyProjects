@@ -23,6 +23,8 @@ import java.util.List;
 @Component
 public class Engine implements Runnable {
 
+    private static final String presentationsFolder = "/home/hashim/Desktop";
+
     private presenter.interfaces.Communicator communicator;
 
     @Inject
@@ -56,7 +58,7 @@ public class Engine implements Runnable {
                     this.dependencyContainer.registerInstanceOfSuperClass(reader, Reader.class);
                     this.communicator = new DefaultCommunicator(writer, reader);
                     this.dependencyContainer.registerInstanceOfSuperClass(this.communicator, presenter.interfaces.Communicator.class);
-                   List<Output> presentationsNames = this.getPresentations(new File("/home/hashim/Desktop")); //TODO
+                   List<Output> presentationsNames = this.getPresentations(new File(presentationsFolder));
                     Output end = new presenter.core.models.Output("end");
                     presentationsNames.add(end);
                     String outputType = "Presentations names";

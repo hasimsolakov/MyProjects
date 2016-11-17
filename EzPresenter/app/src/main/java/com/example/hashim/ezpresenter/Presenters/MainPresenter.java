@@ -8,9 +8,6 @@ import com.example.hashim.ezpresenter.Interfaces.IMainView;
 
 import java.util.Set;
 
-/**
- * Created by Hashim on 9.7.2016 г..
- */
 public class MainPresenter implements IMainPresenter {
     private BluetoothAdapter bluetoothAdapter;
     private IMainView mainView;

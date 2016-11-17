@@ -1,12 +1,9 @@
 package com.example.hashim.ezpresenter.Views;
 
 import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,9 +19,7 @@ import com.example.hashim.ezpresenter.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Hashim on 9.7.2016 г..
- */
+
 public class SelectPresentationView extends AppCompatActivity implements ISelectPresentationView {
     private ISelectPresentationPresenter presenter;
 

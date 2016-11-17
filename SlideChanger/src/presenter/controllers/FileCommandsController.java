@@ -23,7 +23,7 @@ public class FileCommandsController {
         try {
             String name = this.communicator.receive();
             Desktop myDesktop = Desktop.getDesktop();
-            File presentation = new File(presentationFolder + "/" + name);
+            File presentation = new File(presentationFolder + File.separator + name);
             myDesktop.open(presentation);
         } catch (IOException e) {
             e.printStackTrace();

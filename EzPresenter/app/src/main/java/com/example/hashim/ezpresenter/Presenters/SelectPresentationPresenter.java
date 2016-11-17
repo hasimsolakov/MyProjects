@@ -22,9 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/**
- * Created by Hashim on 9.7.2016 г..
- */
+
 public class SelectPresentationPresenter implements ISelectPresentationPresenter {
     private static final UUID MY_UUID =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
